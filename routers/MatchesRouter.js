@@ -12,12 +12,12 @@ const MatchesRouter=express.Router()
 
 MatchesRouter.get(
 
-    "/read/:id?",
+    "/read",
 
     (req,res)=>{
 
 
-const result= new MatchesController().read(req.params.id??null, req.query)
+const result= new MatchesController().read( req.query??null)
 
 result.then(
     (succes)=>{
@@ -32,6 +32,31 @@ res.send(succes)
 
     }
 )
+
+MatchesRouter.get(
+
+    "/readstandings",
+
+    (req,res)=>{
+
+
+const result= new MatchesController().readstandings( req.query??null)
+
+result.then(
+    (succes)=>{
+res.send(succes)
+    }
+)
+.catch(
+    (error)=>{
+        res.send(error)
+    }
+)
+
+    }
+)
+
+
 
 
 
