@@ -57,6 +57,31 @@ res.send(succes)
 )
 
 
+MatchesRouter.get(
+
+    "/ParticularMatchread",
+
+    (req,res)=>{
+
+
+const result= new MatchesController().ParticularMatchread( req.query??null)
+
+result.then(
+    (succes)=>{
+res.send(succes)
+    }
+)
+.catch(
+    (error)=>{
+        res.send(error)
+    }
+)
+
+    }
+)
+
+
+
 
 
 
