@@ -81,6 +81,55 @@ res.send(succes)
 )
 
 
+MatchesRouter.get(
+
+    "/newsread",
+
+    (req,res)=>{
+
+
+const result= new MatchesController().newsread( req.query??null)
+
+result.then(
+    (succes)=>{
+res.send(succes)
+    }
+)
+.catch(
+    (error)=>{
+        res.send(error)
+    }
+)
+
+    }
+)
+
+MatchesRouter.get(
+
+    "/TeamH2Hread",
+
+    (req,res)=>{
+
+
+const result= new MatchesController().TeamH2Hread( req.query??null)
+
+result.then(
+    (succes)=>{
+res.send(succes)
+    }
+)
+.catch(
+    (error)=>{
+        res.send(error)
+    }
+)
+
+    }
+)
+
+
+
+
 
 
 
