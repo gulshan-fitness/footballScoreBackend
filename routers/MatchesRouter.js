@@ -128,6 +128,59 @@ res.send(succes)
 )
 
 
+MatchesRouter.get(
+
+    "/playerDetailsread",
+
+    (req,res)=>{
+
+
+const result= new MatchesController().playerDetailsread( req.query??null)
+
+result.then(
+    (succes)=>{
+res.send(succes)
+    }
+)
+.catch(
+    (error)=>{
+        res.send(error)
+    }
+)
+
+    }
+)
+
+
+MatchesRouter.get(
+
+    "/PerticulerTeamMatchesRead",
+
+    (req,res)=>{
+
+
+const result= new MatchesController().PerticulerTeamMatchesRead( req.query??null)
+
+result.then(
+    (succes)=>{
+res.send(succes)
+    }
+)
+.catch(
+    (error)=>{
+        res.send(error)
+    }
+)
+
+    }
+)
+
+
+
+
+
+
+
 
 
 

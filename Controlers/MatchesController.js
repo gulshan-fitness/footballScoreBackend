@@ -271,6 +271,104 @@ console.log(data);
     });
   }
 
+
+playerDetailsread(query) {
+      
+    return new Promise(async (resolve, reject) => {
+      try {
+
+        console.log(query);
+
+        const params =
+          Object.keys(query)?.length != 0 &&
+          new URLSearchParams(query).toString();
+
+        const url = `https://v3.football.api-sports.io/players?${params}`;
+
+        console.log(url, query);
+
+        axios
+          .get(url, {
+            headers: {
+              "x-apisports-key": process.env.FOOTBALL_API_KEY,
+            },
+          })
+          .then((success) => {
+            const data = success.data;
+
+            if (data.errors && Object.keys(data.errors).length > 0) {
+              console.error("API errors:", data.errors);
+              reject({ msg: data.errors, status: 0 });
+              return;
+            }
+
+      
+
+            resolve({
+              msg: "Matches found",
+              status: 1,
+              player:data?.response[0],
+            });
+
+          })
+          .catch((error) => {
+            console.error("API call failed:", error);
+            reject({ msg: "Failed to fetch fixtures", status: 0 });
+          });
+      } catch (error) {
+        console.error("Internal error:", error);
+        reject({ msg: "Internal error", status: 0 });
+      }
+    });
+  }
+
+
+
+    PerticulerTeamMatchesRead(query) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        console.log(query);
+
+        const params =
+          Object.keys(query)?.length != 0 &&
+          new URLSearchParams(query).toString();
+
+        const url = `https://v3.football.api-sports.io/fixtures?${params}`;
+        console.log(url, query);
+
+        axios
+          .get(url, {
+            headers: {
+              "x-apisports-key": process.env.FOOTBALL_API_KEY,
+            },
+          })
+          .then((success) => {
+            const data = success.data;
+
+            if (data.errors && Object.keys(data.errors).length > 0) {
+              console.error("API errors:", data.errors);
+              reject({ msg: data.errors, status: 0 });
+              return;
+            }
+
+        
+            resolve({
+              msg: "Matches found",
+              status: 1,
+              matches: data?.response ,
+            });
+          })
+          .catch((error) => {
+            console.error("API call failed:", error);
+            reject({ msg: "Failed to fetch fixtures", status: 0 });
+          });
+      } catch (error) {
+        console.error("Internal error:", error);
+        reject({ msg: "Internal error", status: 0 });
+      }
+    });
+  }
+
 }
 
 module.exports = MatchesController;
