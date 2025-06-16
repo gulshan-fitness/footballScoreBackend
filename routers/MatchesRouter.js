@@ -200,6 +200,56 @@ res.send(succes)
     }
 )
 
+MatchesRouter.get(
+
+    "/regionread",
+
+    (req,res)=>{
+
+
+const result= new MatchesController().regionread()
+
+result.then(
+    (succes)=>{
+res.send(succes)
+    }
+)
+.catch(
+    (error)=>{
+        res.send(error)
+    }
+)
+
+    }
+)
+
+
+MatchesRouter.get(
+
+    "/Leaguesread",
+
+    (req,res)=>{
+
+
+const result= new MatchesController().Leaguesread(req.query??null)
+
+result.then(
+    (succes)=>{
+res.send(succes)
+    }
+)
+.catch(
+    (error)=>{
+        res.send(error)
+    }
+)
+
+    }
+)
+
+
+
+
 
 
 
