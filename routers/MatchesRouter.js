@@ -177,6 +177,31 @@ res.send(succes)
 
 
 
+MatchesRouter.get(
+
+    "/TeamPlayerStatsread",
+
+    (req,res)=>{
+
+
+const result= new MatchesController().TeamPlayerStatsread( req.query??null)
+
+result.then(
+    (succes)=>{
+res.send(succes)
+    }
+)
+.catch(
+    (error)=>{
+        res.send(error)
+    }
+)
+
+    }
+)
+
+
+
 
 
 
