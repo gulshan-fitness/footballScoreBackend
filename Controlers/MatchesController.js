@@ -431,7 +431,7 @@ playerDetailsread(query) {
 
         
 
-        const url = `https://v3.football.api-sports.io/regions `;
+        const url = `https://v3.football.api-sports.io/countries`;
 
         
 
