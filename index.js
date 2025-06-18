@@ -6,14 +6,8 @@ const mongoose =require ("mongoose");
 const{ initSocket}=require("./Socket")
 
 const user_router = require("./routers/User_router");
-
-
 const otp_router = require("./routers/Otp_router");
 const AdminRouter = require("./routers/AdminRouter");
-const CrosswordpuzzleRouter = require("./routers/CrosswordPuzzleRouter");
-const CrosswordpuzzleScoreRouter = require("./routers/CrosswordPuzzleScoreRouter");
-const SudokoRouter = require("./routers/SudokoRouter");
-const SudokoScoreRouter = require("./routers/SudokoScoreRouter");
 const MatchesRouter = require("./routers/MatchesRouter");
 
 
@@ -56,21 +50,8 @@ app.get('/', (req, res) => {
 
 
 app.use("/user",user_router)
-
-
-
 app.use("/otp",otp_router)
-
 app.use("/admin",AdminRouter)
-app.use("/crosswordpuzzle",CrosswordpuzzleRouter)
-app.use("/crosswordpuzzlescore",CrosswordpuzzleScoreRouter)
-app.use("/sudoko",SudokoRouter)
-app.use("/sudokoscore",SudokoScoreRouter)
-
-
-
-
-
 app.use("/matches",MatchesRouter)
 
 
