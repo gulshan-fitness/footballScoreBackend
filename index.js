@@ -30,7 +30,12 @@ app.use(express.json());
 
 app.use(express.static("public"))
 require('dotenv').config()
-app.use(cors())
+app.use(cors(
+    {
+        origin:"https://footballscorebackend.onrender.com",
+        credentials:true
+    }
+))
 
 
 
