@@ -26,38 +26,6 @@ const initSocket = (server) => {
 
 
 
-
-socket.on("JoinOrderUpdateRoom",( id)=>{
-
-
-            const room = `Order:${id}`;
-            socket.join(room);
-
-            
-            console.log(`${id} connected in the  ${room} `);   
-
-
-})
-
-
-
-
-socket.on("JoinDeliveryPartnerLocationRoom",( id)=>{
-
-
-    const room = `Location:${id}`;
-    socket.join(room);
-
-    
-    console.log(`${id} connected in the  ${room} `);   
-
-
-})
-
-
-
-
-
         
 
         socket.on("disconnect", () => {

@@ -1,10 +1,11 @@
 const { default: axios } = require("axios");
 
 class MatchesController {
+
   read(query) {
     return new Promise(async (resolve, reject) => {
       try {
-        console.log(query);
+       
 
         const params =
           Object.keys(query)?.length != 0 &&
@@ -65,12 +66,14 @@ class MatchesController {
             });
           })
           .catch((error) => {
-            console.error("API call failed:", error);
-            reject({ msg: "Failed to fetch fixtures", status: 0 });
-          });
+  const message =
+    error?.response?.data?.message || error?.message || "Unknown error";
+  console.error("API call failed:", message);
+  reject(message); // return only message
+});
       } catch (error) {
         console.error("Internal error:", error);
-        reject({ msg: "Internal error", status: 0 });
+        reject({ msg:error, status: 0 });
       }
     });
   }
@@ -106,7 +109,7 @@ class MatchesController {
               return;
             }
 
-console.log(data);
+
 
 
             resolve({
@@ -116,12 +119,14 @@ console.log(data);
             });
           })
           .catch((error) => {
-            console.error("API call failed:", error);
-            reject({ msg: error, status: 0 });
-          });
+  const message =
+    error?.response?.data?.message || error?.message || "Unknown error";
+  console.error("API call failed:", message);
+  reject(message); // return only message
+});
       } catch (error) {
         console.error("Internal error:", error);
-        reject({ msg: "Internal error", status: 0 });
+        reject({ msg: error, status: 0 });
       }
     });
   }
@@ -164,12 +169,14 @@ console.log(data);
             });
           })
           .catch((error) => {
-            console.error("API call failed:", error);
-            reject({ msg: "Failed to fetch fixtures", status: 0 });
-          });
+  const message =
+    error?.response?.data?.message || error?.message || "Unknown error";
+  console.error("API call failed:", message);
+  reject(message); // return only message
+});
       } catch (error) {
         console.error("Internal error:", error);
-        reject({ msg: "Internal error", status: 0 });
+        reject({ msg:error, status: 0 });
       }
     });
   }
@@ -211,12 +218,14 @@ console.log(data);
             });
           })
           .catch((error) => {
-            console.error("API call failed:", error);
-            reject({ msg: "Failed to fetch fixtures", status: 0 });
-          });
+  const message =
+    error?.response?.data?.message || error?.message || "Unknown error";
+  console.error("API call failed:", message);
+  reject(message); // return only message
+});
       } catch (error) {
         console.error("Internal error:", error);
-        reject({ msg: "Internal error", status: 0 });
+        reject({ msg:error, status: 0 });
       }
     });
   }
@@ -262,11 +271,11 @@ console.log(data);
           })
           .catch((error) => {
             console.error("API call failed:", error);
-            reject({ msg: "Failed to fetch fixtures", status: 0 });
+            reject({ msg:error, status: 0 });
           });
       } catch (error) {
         console.error("Internal error:", error);
-        reject({ msg: "Internal error", status: 0 });
+        reject({ msg: error, status: 0 });
       }
     });
   }
@@ -312,12 +321,14 @@ playerDetailsread(query) {
 
           })
           .catch((error) => {
-            console.error("API call failed:", error);
-            reject({ msg: "Failed to fetch fixtures", status: 0 });
-          });
+  const message =
+    error?.response?.data?.message || error?.message || "Unknown error";
+  console.error("API call failed:", message);
+  reject(message); // return only message
+});
       } catch (error) {
         console.error("Internal error:", error);
-        reject({ msg: "Internal error", status: 0 });
+        reject({ msg: error, status: 0 });
       }
     });
   }
@@ -360,12 +371,14 @@ playerDetailsread(query) {
             });
           })
           .catch((error) => {
-            console.error("API call failed:", error);
-            reject({ msg: "Failed to fetch fixtures", status: 0 });
-          });
+  const message =
+    error?.response?.data?.message || error?.message || "Unknown error";
+  console.error("API call failed:", message);
+  reject(message); // return only message
+});
       } catch (error) {
         console.error("Internal error:", error);
-        reject({ msg: "Internal error", status: 0 });
+        reject({ msg:error, status: 0 });
       }
     });
   }
@@ -411,64 +424,20 @@ playerDetailsread(query) {
 
           })
           .catch((error) => {
-            console.error("API call failed:", error);
-            reject({ msg: "Failed to fetch fixtures", status: 0 });
-          });
+  const message =
+    error?.response?.data?.message || error?.message || "Unknown error";
+  console.error("API call failed:", message);
+  reject(message); // return only message
+});
       } catch (error) {
         console.error("Internal error:", error);
-        reject({ msg: "Internal error", status: 0 });
+        reject({ msg: error, status: 0 });
       }
     });
   }
 
 
-   regionread() {
-      
-    return new Promise(async (resolve, reject) => {
-      try {
-
-      
-
-        
-
-        const url = `https://v3.football.api-sports.io/countries`;
-
-        
-
-     await   axios
-          .get(url, {
-            headers: {
-              "x-apisports-key": process.env.FOOTBALL_API_KEY,
-            },
-          })
-          .then((success) => {
-            const data = success.data;
-
-            if (data.errors && Object.keys(data.errors).length > 0) {
-              console.error("API errors:", data.errors);
-              reject({ msg: data.errors, status: 0 });
-              return;
-            }
-
-      
-
-            resolve({
-              msg: "regions found",
-              status: 1,
-              regions:data?.response,
-            });
-
-          })
-          .catch((error) => {
-            console.error("API call failed:", error);
-            reject({ msg: "Failed to fetch fixtures", status: 0 });
-          });
-      } catch (error) {
-        console.error("Internal error:", error);
-        reject({ msg: "Internal error", status: 0 });
-      }
-    });
-  }
+ 
 
 
     Leaguesread(query) {
@@ -504,12 +473,14 @@ const params=Object.keys(query)?.length!=0&& new URLSearchParams(query).toString
 
           })
           .catch((error) => {
-            console.error("API call failed:", error);
-            reject({ msg: "Failed to fetch fixtures", status: 0 });
-          });
+  const message =
+    error?.response?.data?.message || error?.message || "Unknown error";
+  console.error("API call failed:", message);
+  reject(message); // return only message
+});
       } catch (error) {
         console.error("Internal error:", error);
-        reject({ msg: "Internal error", status: 0 });
+        reject({ msg: error, status: 0 });
       }
     });
   }

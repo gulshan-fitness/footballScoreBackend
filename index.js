@@ -28,13 +28,8 @@ const server=http.createServer(app)
 
 app.use(express.json());
 
-
 app.use(express.static("public"))
-
-
 require('dotenv').config()
-
-
 app.use(cors())
 
 
